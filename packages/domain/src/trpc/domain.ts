@@ -136,6 +136,8 @@ export const domainRouter = router({
           builderOrigin: env.BUILDER_ORIGIN,
           githubSha: env.GITHUB_SHA,
           buildId: build.id,
+          // Added by m8jj to send domain info to publisher
+          domains: domains,
           // preview support
           branchName: env.GITHUB_REF_NAME,
           destination: input.destination,
@@ -146,6 +148,15 @@ export const domainRouter = router({
         if (input.destination === "static" && result.success) {
           return { success: true as const, name };
         }
+        
+        // Added by m8jj
+        const buildStatusUpdated = await updateBuildStatus(
+          {
+            buildId: build.id,
+            publishStatus: result.success === true ? "PUBLISHED" : "FAILED",
+          },
+          ctx
+        );
 
         return result;
       } catch (error) {
