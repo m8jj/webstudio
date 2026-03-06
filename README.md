@@ -1,5 +1,5 @@
 # M8JJ's Guide to Self-Hosting Webstudio
-
+[Changes I've made from the original repo](https://github.com/m8jj/webstudio/commits/main/?author=m8jj)
 ## Initial Server Setup Instructions (Using Ubuntu)
 1. Install latest Node v20 version
 2. Install latest Docker Engine
