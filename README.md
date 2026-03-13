@@ -1,11 +1,11 @@
 # M8JJ's Guide to Self-Hosting Webstudio
 [Changes I've made from the original repo](https://github.com/m8jj/webstudio/commits/main/?author=m8jj)
 ## Initial Server Setup Instructions (Using Ubuntu)
-1. Install latest Node v20 version
+1. Install latest Node v22 version
 2. Install latest Docker Engine
 4. Run `sudo npm install -g pnpm` to install PNPM
 5. Run `git clone` to clone your repo (fork from this one) and `cd` into the root directory
-6. (INSTRUCTIONS TBA) Create system service "wstd" to auto-run on system startup (this service runs `pnpm dev` to start the Builder webserver)
+6. Create a system service named "wstd" to auto-run on system startup that runs `pnpm dev` from the root directory of the Builder
 7. Run `sh update.sh` to run the updater script that will set up the Builder
 
 ## Publisher Setup Instructions (TBA)
