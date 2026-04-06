@@ -149,14 +149,12 @@ export const domainRouter = router({
           return { success: true as const, name };
         }
         
-        // Added by m8jj
-        const buildStatusUpdated = await updateBuildStatus(
-          {
-            buildId: build.id,
-            publishStatus: result.success === true ? "PUBLISHED" : "FAILED",
-          },
-          ctx
-        );
+        /* --- Added by m8jj --- */
+        await ctx.postgrest.client
+            .from("Build")
+            .update({ publishStatus: result.success === true ? "PUBLISHED" : "FAILED" })
+            .eq("id", build.id);
+        /* ------ */
 
         return result;
       } catch (error) {
